@@ -16,13 +16,13 @@ public class NuevoTweet extends VerticalLayout {
     public void vistaNuevoTweet(){
         removeAll();
         TextField id = new TextField("ID");
-        TextField tipo = new TextField("Tipo");
-        TextField edad = new TextField("Edad");
+        TextField tipo = new TextField("nombre");
+
         Button aceptar = new Button("Aceptar");
 
         FormLayout formLayout = new FormLayout();
         formLayout.add(
-                id, edad, tipo
+                id, tipo
         );
         formLayout.setResponsiveSteps(
                 // Use one column by default
@@ -39,14 +39,13 @@ public class NuevoTweet extends VerticalLayout {
         horizontalLayout1.add(aceptar);
 
         aceptar.addClickListener(event -> {
-            Pokemon tweetNuevo = new Pokemon();
+            Request tweetNuevo = new Request();
 
             tweetNuevo.setId(Integer.parseInt(id.getValue()));
-            tweetNuevo.setName(tipo.getValue());
-            tweetNuevo.setId(Integer.parseInt(edad.getValue()));
+            tweetNuevo.setTipo(tipo.getValue());
 
             try {
-                greetService.anhadirForm(tweetNuevo);
+                greetService.getPokemons(tweetNuevo);
                 removeAll();
                 PestanhaListas pestanhaListas = new PestanhaListas();
                 pestanhaListas.vistaPestanhas();
