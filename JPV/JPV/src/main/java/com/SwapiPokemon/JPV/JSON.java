@@ -13,9 +13,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class JSON {
-    public static ArrayList<Animal> LeerFicheroJson(String ruta){
+    public static ArrayList<Pokemon> LeerFicheroJson(String ruta){
         //En esta clase se lee el fichero JSON de menores de 60
-        ArrayList <Animal> listaJSON = new ArrayList<Animal>();
+        ArrayList <Pokemon> listaJSON = new ArrayList<Pokemon>();
         try {
             //Creamos el objeto Gson
             Gson gson = new Gson();
@@ -29,7 +29,7 @@ public class JSON {
             }
 
             //Usamos la libreria Gson para leer el fichero Json e introducirlo en un arraylist
-            listaJSON = new Gson().fromJson(reader, new TypeToken<ArrayList<Animal>>() {}.getType());
+            listaJSON = new Gson().fromJson(reader, new TypeToken<ArrayList<Pokemon>>() {}.getType());
             System.out.println("FICHERO users.json LEIDO CORRECTAMENTE");
 
             //Cerramos el reader
@@ -44,7 +44,7 @@ public class JSON {
         }
         return listaJSON;
     }
-    public void escribirUsers(ArrayList<Animal> lista){
+    public void escribirUsers(ArrayList<Pokemon> lista){
         try {
             // Creamos una nueva clase Json
             Gson gson = new Gson();
