@@ -11,6 +11,7 @@ import java.net.http.HttpResponse;
 
 public class DataHanding {
     String url = "https://pokeapi.co/api/v2/%s/%s";
+    JSON json = new JSON();
 
     public Pokemon mostrarPokemon(Request params){
         Pokemon pokemon = null;
@@ -41,6 +42,7 @@ public class DataHanding {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         return pokemon;
     }
 }
