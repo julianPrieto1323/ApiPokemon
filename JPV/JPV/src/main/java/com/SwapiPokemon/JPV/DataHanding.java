@@ -8,15 +8,19 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 
 public class DataHanding {
-    String url = "https://pokeapi.co/api/v2/%s/%s";
+    String urlApi = "https://pokeapi.co/api/v2/%s/%s";
+    String url = "http://localhost:8080";
     JSON json = new JSON();
+    String rutaPokemon = "pokemons.json";
+    String rutaRequest = "requests.json";
 
     public Pokemon mostrarPokemon(Request params){
         Pokemon pokemon = null;
 
-        String peopleUrl = String.format(url, params.getTipo(), params.getId());
+        String peopleUrl = String.format(urlApi, params.getTipo(), params.getId());
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
@@ -44,5 +48,16 @@ public class DataHanding {
         }
 
         return pokemon;
+    }
+    public ArrayList<Request> eliminarRequest(Request request){
+        ArrayList<Request> lisaRequest = json.leerFicheroRequests(rutaRequest);
+
+        for (int i = 0; i < lisaRequest.size(); i++){
+            if (lisaRequest.get(i).getId() == request.getId()){
+                lisaRequest.remove(i);
+                json.escribirPeticion(lisaRequest);
+            }
+        }
+        return lisaRequest;
     }
 }
