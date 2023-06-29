@@ -60,4 +60,35 @@ public class DataHanding {
         }
         return lisaRequest;
     }
+    public Habilidad mostrarHabilidad(Request params){
+        Habilidad habilidad = null;
+
+        String peopleUrl = String.format(urlApi, params.getTipo(), params.getId());
+
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI(peopleUrl))
+                    .GET()
+                    .build();
+
+            HttpResponse<String> response = HttpClient
+                    .newBuilder()
+                    .build()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            String jsonData = response.body();
+            System.out.println(jsonData);
+            Gson gson = new Gson();
+            habilidad = gson.fromJson(jsonData, Habilidad.class);
+
+        } catch (URISyntaxException e) {
+            System.out.println("Error al crear la request: " + e.getMessage());
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return habilidad;
+    }
 }
