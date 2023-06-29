@@ -10,22 +10,30 @@ public class Controller{
     JSON json = new JSON();
     String rutaPokemon = "pokemons.json";
     String rutaRequest = "requests.json";
+    String rutaAbilities = "Habilidad.json";
     ArrayList<Request> listaRequest= new ArrayList<Request>();
+    ArrayList<Habilidad> listaAbilities= new ArrayList<Habilidad>();
     ArrayList<Pokemon> listaPokemon = new ArrayList<Pokemon>();
     @PostMapping("/pokemon")
-    public Pokemon getPokemon(@RequestBody Request request){
+    public void getPokemon(@RequestBody Request request){
         if (json.LeerFicheroJson(rutaPokemon) != null){
             listaPokemon = json.LeerFicheroJson(rutaPokemon);
         }
         if (json.leerFicheroRequests(rutaRequest) != null){
             listaRequest = json.leerFicheroRequests(rutaRequest);
         }
-        listaRequest.add(request);
-        json.escribirPeticion(listaRequest);
-        Pokemon pokemon = dataHanding.mostrarPokemon(request);
-        listaPokemon.add(pokemon);
-        json.escribirUsers(listaPokemon);
-        return pokemon;
+        if (json.leerFicheroAbilities(rutaAbilities) != null){
+            listaAbilities = json.leerFicheroAbilities(rutaAbilities);
+        }
+        if (request.getTipo().equals("pokemon")){
+            listaRequest.add(request);
+            json.escribirPeticion(listaRequest);
+            Pokemon pokemon = dataHanding.mostrarPokemon(request);
+            listaPokemon.add(pokemon);
+            json.escribirUsers(listaPokemon);
+        }
+        }
+
     }
     @GetMapping("/request")
     public ArrayList<Request> getrequest(){
@@ -37,4 +45,5 @@ public class Controller{
         Request request1 = new Request(null, id);
         return dataHanding.eliminarRequest(request1);
     }
+
 }
