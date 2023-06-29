@@ -31,7 +31,12 @@ public class Controller{
             Pokemon pokemon = dataHanding.mostrarPokemon(request);
             listaPokemon.add(pokemon);
             json.escribirUsers(listaPokemon);
-        }
+        }else if(request.getTipo().equals("ability")){
+            listaRequest.add(request);
+            json.escribirPeticion(listaRequest);
+            Habilidad habilidad = dataHanding.mostrarHabilidad(request);
+            listaAbilities.add(habilidad);
+            json.escribirAbilities(listaAbilities);
         }
 
     }
