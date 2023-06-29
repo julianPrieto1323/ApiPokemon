@@ -42,6 +42,12 @@ public class Controller{
             Habilidad habilidad = dataHanding.mostrarHabilidad(request);
             listaAbilities.add(habilidad);
             json.escribirAbilities(listaAbilities);
+        }else if (request.getTipo().equals("berry")){
+            listaRequest.add(request);
+            json.escribirPeticion(listaRequest);
+            Berry berry = dataHanding.mostrarBerry(request);
+            listaBerries.add(berry);
+            json.escribirBerries(listaBerries);
         }
 
     }
