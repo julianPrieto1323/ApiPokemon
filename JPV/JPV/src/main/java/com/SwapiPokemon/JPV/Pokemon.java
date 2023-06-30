@@ -2,16 +2,22 @@ package com.SwapiPokemon.JPV;
 
 import com.google.gson.Gson;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pokemon {
     private int id;
     private String name;
+    private List<PokemonMove> moves;
 
     public Pokemon() {
     }
 
-    public Pokemon(int id, String name) {
+    public Pokemon(int id, String name, ArrayList<PokemonMove> moves) {
         this.id = id;
         this.name = name;
+        this.moves = moves;
     }
 
     public int getId() {
@@ -30,12 +36,12 @@ public class Pokemon {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Pokemon{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public List<PokemonMove> getMoves() {
+        return moves;
+    }
+
+    public void setMoves(List<PokemonMove> moves) {
+        this.moves = moves;
     }
 
     public String montarJSON(){
