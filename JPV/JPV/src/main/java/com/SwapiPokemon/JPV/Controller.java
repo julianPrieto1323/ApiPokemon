@@ -39,6 +39,7 @@ public class Controller{
             listaRequest.add(request);
             json.escribirPeticion(listaRequest);
             Pokemon pokemon = dataHanding.mostrarPokemon(request);
+            System.out.println(pokemon.montarJSON());
             listaPokemon.add(pokemon);
             json.escribirUsers(listaPokemon);
         }else if(request.getTipo().equals("ability")){
