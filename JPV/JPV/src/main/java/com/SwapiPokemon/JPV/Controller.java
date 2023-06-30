@@ -12,6 +12,8 @@ public class Controller{
     String rutaRequest = "requests.json";
     String rutaAbilities = "Habilidad.json";
     String rutaberries = "berries.json";
+    String rutaMoves = "moves.json";
+    ArrayList<Moves> listaMoves = new ArrayList<Moves>();
     ArrayList<Berry> listaBerries= new ArrayList<Berry>();
     ArrayList<Request> listaRequest= new ArrayList<Request>();
     ArrayList<Habilidad> listaAbilities= new ArrayList<Habilidad>();
@@ -29,6 +31,9 @@ public class Controller{
         }
         if (json.leerFicheroBerries(rutaberries) != null){
             listaBerries = json.leerFicheroBerries(rutaberries);
+        }
+        if (json.leerFciheroMoves(rutaMoves) != null){
+            listaMoves = json.leerFciheroMoves(rutaMoves);
         }
         if (request.getTipo().equals("pokemon")){
             listaRequest.add(request);
@@ -48,6 +53,12 @@ public class Controller{
             Berry berry = dataHanding.mostrarBerry(request);
             listaBerries.add(berry);
             json.escribirBerries(listaBerries);
+        }else if (request.getTipo().equals("move")){
+            listaRequest.add(request);
+            json.escribirMoves(listaMoves);
+            Moves moves = dataHanding.mostrarMoves(request);
+            listaMoves.add(moves);
+            json.escribirMoves(listaMoves);
         }
 
     }
