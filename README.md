@@ -13,3 +13,5 @@ V-1.2 Funcionalidad de solicitud de info de Berries
 V-1.3 Funcionalidad de solicitud de info de Moves
 
 V-1.4 Funcionalidad de solicitud de Pokemons devuelve los Moves
+
+V-1.5 Modificada toda la funcionalidad de la solicitud de Pokemons con Moves para no usar lo mismo que la API original.
