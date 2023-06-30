@@ -149,6 +149,24 @@ public class JSON {
             throw new RuntimeException(e);
         }
     }
+    public void escribirMoves(ArrayList<Moves> lista){
+        try {
+            // Creamos una nueva clase Json
+            Gson gson = new Gson();
+
+            //Creamos la clase que permite escribir en el fichero Json
+            Writer writer = new FileWriter("moves.json");
+            try {
+                gson.toJson(lista, writer);
+                writer.close();
+            } catch (JsonIOException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static ArrayList<Habilidad> leerFicheroAbilities(String ruta){
         //En esta clase se lee el fichero JSON de menores de 60
         ArrayList <Habilidad> listaJSON = new ArrayList<Habilidad>();
@@ -197,6 +215,37 @@ public class JSON {
 
             //Usamos la libreria Gson para leer el fichero Json e introducirlo en un arraylist
             listaJSON = new Gson().fromJson(reader, new TypeToken<ArrayList<Berry>>() {}.getType());
+            System.out.println("FICHERO users.json LEIDO CORRECTAMENTE");
+
+            //Cerramos el reader
+            try {
+                reader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+        return listaJSON;
+    }
+    public static ArrayList<Moves> leerFciheroMoves(String ruta){
+        //En esta clase se lee el fichero JSON de menores de 60
+        ArrayList <Moves> listaJSON = new ArrayList<Moves>();
+        try {
+            //Creamos el objeto Gson
+            Gson gson = new Gson();
+
+            // Creamos el reader
+            Reader reader = null;
+            try {
+                reader = Files.newBufferedReader(Paths.get(ruta));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            //Usamos la libreria Gson para leer el fichero Json e introducirlo en un arraylist
+            listaJSON = new Gson().fromJson(reader, new TypeToken<ArrayList<Moves>>() {}.getType());
             System.out.println("FICHERO users.json LEIDO CORRECTAMENTE");
 
             //Cerramos el reader
