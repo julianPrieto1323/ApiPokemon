@@ -9,12 +9,12 @@ import java.util.List;
 public class Pokemon {
     private int id;
     private String name;
-    private List<PokemonMove> moves;
+    private List<AuxMove> moves;
 
     public Pokemon() {
     }
 
-    public Pokemon(int id, String name, ArrayList<PokemonMove> moves) {
+    public Pokemon(int id, String name, ArrayList<AuxMove> moves) {
         this.id = id;
         this.name = name;
         this.moves = moves;
@@ -36,11 +36,11 @@ public class Pokemon {
         this.name = name;
     }
 
-    public List<PokemonMove> getMoves() {
+    public List<AuxMove> getMoves() {
         return moves;
     }
 
-    public void setMoves(List<PokemonMove> moves) {
+    public void setMoves(List<AuxMove> moves) {
         this.moves = moves;
     }
 
