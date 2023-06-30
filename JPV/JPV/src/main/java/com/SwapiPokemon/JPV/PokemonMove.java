@@ -5,22 +5,33 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 public class PokemonMove {
-    private NameApiResource<Moves> move;
+    private String name;
+    private String url;
 
     public PokemonMove() {
     }
 
-    public PokemonMove(NameApiResource<Moves> move) {
-        this.move = move;
+    public PokemonMove(String name, String url) {
+        this.name = name;
+        this.url = url;
     }
 
-    public NameApiResource<Moves> getMove() {
-        return move;
+    public String getName() {
+        return name;
     }
 
-    public void setMove(NameApiResource<Moves> move) {
-        this.move = move;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public String montarJSON(){
         Gson gson = new Gson();
         return gson.toJson(this);
