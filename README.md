@@ -11,3 +11,5 @@ V-1.1 Funcionalidad de la solicitud de info de Habildidad
 V-1.2 Funcionalidad de solicitud de info de Berries
 
 V-1.3 Funcionalidad de solicitud de info de Moves
+
+V-1.4 Funcionalidad de solicitud de Pokemons devuelve los Moves
