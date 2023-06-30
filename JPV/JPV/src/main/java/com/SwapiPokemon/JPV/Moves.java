@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-public class Moves implements PokeApiResource, Localizable{
+public class Moves{
     private String name;
     private int id;
     private int accuracy;
@@ -54,10 +54,5 @@ public class Moves implements PokeApiResource, Localizable{
     public String montarJSON(){
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-
-    @Override
-    public List<Name> getNames() {
-        return null;
     }
 }
