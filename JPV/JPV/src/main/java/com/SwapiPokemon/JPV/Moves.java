@@ -2,11 +2,12 @@ package com.SwapiPokemon.JPV;
 
 import com.google.gson.Gson;
 
-public class Moves {
+import java.util.List;
+
+public class Moves implements PokeApiResource, Localizable{
     private String name;
     private int id;
     private int accuracy;
-
     public Moves() {
     }
 
@@ -24,7 +25,7 @@ public class Moves {
         this.name = name;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -40,6 +41,8 @@ public class Moves {
         this.accuracy = accuracy;
     }
 
+
+
     @Override
     public String toString() {
         return "Moves{" +
@@ -51,5 +54,10 @@ public class Moves {
     public String montarJSON(){
         Gson gson = new Gson();
         return gson.toJson(this);
+    }
+
+    @Override
+    public List<Name> getNames() {
+        return null;
     }
 }
