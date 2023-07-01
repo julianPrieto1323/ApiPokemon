@@ -22,6 +22,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Service
 public class GreetService implements Serializable {
@@ -45,7 +46,26 @@ public class GreetService implements Serializable {
         }
         return listaTweets;
     }
-    public ArrayList<Pokemon> getPokemons(Request request) throws URISyntaxException {
+    public ArrayList<Request> getTodasRequest() throws URISyntaxException {
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "requestTodas")).GET().build();
+        Gson gson = new Gson();
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+        ArrayList<Request> listaTweets = new ArrayList<Request>();
+        try {
+
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Request>>(){}.getType());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTweets;
+    }
+    public Object getPokemons(Request request) throws URISyntaxException {
         Gson gson = new Gson();
         String jsonBody = gson.toJson(request);
 
@@ -56,19 +76,19 @@ public class GreetService implements Serializable {
                 .build();
 
         String resultado = null;
-        ArrayList<Pokemon> listaTweets = new ArrayList<Pokemon>();
+        Object objeto = new Object();
 
         try {
             HttpResponse<String> respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
             resultado = respuesta.body();
-            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Pokemon>>(){}.getType());
+            objeto = gson.fromJson(resultado, new TypeToken<Object>(){}.getType());
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        return listaTweets;
+        return objeto;
     }
     public static ArrayList<Pokemon> eliminarPokemon(int id) throws URISyntaxException, IOException {
         ArrayList<Pokemon> listaTweets = new ArrayList<Pokemon>();
