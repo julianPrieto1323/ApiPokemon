@@ -90,9 +90,48 @@ public class Controller{
 
     //cambiar por arraylist generica para devolver datos
     @GetMapping("/request")
-    public ArrayList<Request> getrequest(){
-        ArrayList<Request> listaRequest = json.leerFicheroRequests(rutaRequest);
-        return listaRequest;
+    public ArrayList<Object> getrequest(@RequestParam String tipo){
+        ArrayList<Object> lista = new ArrayList<Object>();
+        switch (tipo){
+            case "pokemon":
+                ArrayList<Pokemon> listaPokemon = json.LeerFicheroJson(rutaPokemon);
+                for (int i = 0; i < listaPokemon.size(); i++){
+                    lista.add((Object) listaPokemon.get(i));
+                }
+                break;
+            case "request":
+                ArrayList<Request> listaRequest = json.leerFicheroRequests(rutaRequest);
+                for (int i = 0; i < listaRequest.size(); i++){
+                    lista.add((Object) listaRequest.get(i));
+                }
+                break;
+            case "berry":
+                ArrayList<Berry> listaBerries = json.leerFicheroBerries(rutaberries);
+                for (int i = 0; i < listaBerries.size(); i++){
+                    lista.add((Object) listaBerries.get(i));
+                }
+                break;
+            case "generation":
+                ArrayList<Generations> listaGenerations = json.LeerFicheroGenerations(rutaGenerations);
+                for (int i = 0; i < listaGenerations.size(); i++){
+                    lista.add((Object) listaGenerations.get(i));
+                }
+                break;
+            case "move":
+                ArrayList<Moves>listaMoves = json.leerFciheroMoves(rutaMoves);
+                for (int i = 0; i < listaMoves.size(); i++){
+                    lista.add((Object) listaMoves.get(i));
+                }
+                break;
+            case "ability":
+                ArrayList<Habilidad>listaAbilities = json.leerFicheroAbilities(rutaAbilities);
+                for (int i = 0; i < listaAbilities.size(); i++){
+                    lista.add((Object) listaAbilities.get(i));
+                }
+                break;
+        }
+
+        return lista;
     }
     @DeleteMapping("/request")
     public ArrayList<Request> eliminarRequest(@RequestParam int id){
