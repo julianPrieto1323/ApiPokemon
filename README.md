@@ -1,4 +1,4 @@
-# swapiPokemon
+# ApiPokemon
 
 Api que permite visualizar y hace un registro de cada una de las solicitudes de los pokemons de la swapi pokeapi
 
@@ -21,3 +21,5 @@ V-1.6 Añadida funcionalidad de mostrar las Habilidades de los pokemon al solici
 V-1.7 Añadida funcionalidad de mostrar Species de los pokemons al solicitar un Pokemon
 
 V-1.8 Añadida funcionalidad de mostrar Generations
+
+V-2.0 Añadida la funcionalidad del Front de mostrar los distintos tipos de clases de los que se pueden pedir información.
