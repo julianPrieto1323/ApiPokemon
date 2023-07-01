@@ -38,7 +38,7 @@ public class MainView extends VerticalLayout {
      *
      * @param service The message service. Automatically injected Spring managed bean.
      */
-    public MainView(@Autowired GreetService service) {
+    public MainView(@Autowired GreetService service) throws URISyntaxException {
         Tab alta = new Tab("Alta");
         Tab listado = new Tab("Listados");
 
@@ -53,7 +53,11 @@ public class MainView extends VerticalLayout {
         tabs.addSelectedChangeListener(event -> {
             if (event.getSelectedTab().equals(alta)) {
                 formulario.setVisible(true);
-                formulario.vistaNuevoTweet();
+                try {
+                    formulario.vistaNuevoTweet();
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
                 pestanhaListas.setVisible(false);
             } else {
                 pestanhaListas.setVisible(true);

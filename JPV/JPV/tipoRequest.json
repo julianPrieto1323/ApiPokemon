@@ -1,0 +1,18 @@
+[
+  {
+  "tipo": "pokemon"
+  }
+  ,
+  {
+  "tipo": "generation"
+  },
+  {
+    "tipo": "berry"
+  },
+  {
+    "tipo": "abilities"
+  },
+  {
+    "tipo": "move"
+  }
+]
