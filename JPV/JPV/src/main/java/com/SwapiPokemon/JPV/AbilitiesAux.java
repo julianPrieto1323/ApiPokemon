@@ -3,21 +3,21 @@ package com.SwapiPokemon.JPV;
 import com.google.gson.Gson;
 
 public class AbilitiesAux {
-    private PokemonAbilities abiliy;
+    private PokemonAbilities ability;
 
     public AbilitiesAux() {
     }
 
-    public AbilitiesAux(PokemonAbilities abiliy) {
-        this.abiliy = abiliy;
+    public AbilitiesAux(PokemonAbilities ability) {
+        this.ability = ability;
     }
 
-    public PokemonAbilities getAbiliy() {
-        return abiliy;
+    public PokemonAbilities getAbility() {
+        return ability;
     }
 
-    public void setAbiliy(PokemonAbilities abiliy) {
-        this.abiliy = abiliy;
+    public void setAbility(PokemonAbilities ability) {
+        this.ability = ability;
     }
     public String montarJson(){
         Gson gson = new Gson();

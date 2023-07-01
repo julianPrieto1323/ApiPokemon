@@ -15,10 +15,11 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(int id, String name, ArrayList<AuxMove> moves) {
+    public Pokemon(int id, String name, List<AuxMove> moves, List<AbilitiesAux> abilities) {
         this.id = id;
         this.name = name;
         this.moves = moves;
+        this.abilities = abilities;
     }
 
     public int getId() {
@@ -43,6 +44,14 @@ public class Pokemon {
 
     public void setMoves(List<AuxMove> moves) {
         this.moves = moves;
+    }
+
+    public List<AbilitiesAux> getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(List<AbilitiesAux> abilities) {
+        this.abilities = abilities;
     }
 
     public String montarJSON(){
