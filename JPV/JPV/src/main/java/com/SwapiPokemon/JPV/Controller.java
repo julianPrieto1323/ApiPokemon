@@ -40,46 +40,43 @@ public class Controller{
         if (json.LeerFicheroGenerations(rutaGenerations) != null){
             listaGenerations = json.LeerFicheroGenerations(rutaGenerations);
         }
-        switch (request.getTipo()){
+        switch (request.getTipo().toLowerCase()){
             case "pokemon":
                 listaRequest.add(request);
                 json.escribirPeticion(listaRequest);
                 Pokemon pokemon = dataHanding.mostrarPokemon(request);
                 listaPokemon.add(pokemon);
                 json.escribirUsers(listaPokemon);
+                break;
+            case "ability":
+                listaRequest.add(request);
+                json.escribirPeticion(listaRequest);
+                Habilidad habilidad = dataHanding.mostrarHabilidad(request);
+                listaAbilities.add(habilidad);
+                json.escribirAbilities(listaAbilities);
+                break;
+            case "berry":
+                listaRequest.add(request);
+                json.escribirPeticion(listaRequest);
+                Berry berry = dataHanding.mostrarBerry(request);
+                listaBerries.add(berry);
+                json.escribirBerries(listaBerries);
+                break;
+            case "move":
+                listaRequest.add(request);
+                json.escribirMoves(listaMoves);
+                Moves moves = dataHanding.mostrarMoves(request);
+                listaMoves.add(moves);
+                json.escribirMoves(listaMoves);
+                break;
+            case "generation":
+                listaRequest.add(request);
+                json.escribirMoves(listaMoves);
+                Generations generation = dataHanding.mostrarGeneration(request);
+                listaGenerations.add(generation);
+                json.escribirGenerations(listaGenerations);
+                break;
         }
-        if (request.getTipo().equals("pokemon")){
-            listaRequest.add(request);
-            json.escribirPeticion(listaRequest);
-            Pokemon pokemon = dataHanding.mostrarPokemon(request);
-            listaPokemon.add(pokemon);
-            json.escribirUsers(listaPokemon);
-        }else if(request.getTipo().equals("ability")){
-            listaRequest.add(request);
-            json.escribirPeticion(listaRequest);
-            Habilidad habilidad = dataHanding.mostrarHabilidad(request);
-            listaAbilities.add(habilidad);
-            json.escribirAbilities(listaAbilities);
-        }else if (request.getTipo().equals("berry")){
-            listaRequest.add(request);
-            json.escribirPeticion(listaRequest);
-            Berry berry = dataHanding.mostrarBerry(request);
-            listaBerries.add(berry);
-            json.escribirBerries(listaBerries);
-        }else if (request.getTipo().equals("move")){
-            listaRequest.add(request);
-            json.escribirMoves(listaMoves);
-            Moves moves = dataHanding.mostrarMoves(request);
-            listaMoves.add(moves);
-            json.escribirMoves(listaMoves);
-        }else if (request.getTipo().equals("generation")){
-            listaRequest.add(request);
-            json.escribirMoves(listaMoves);
-            Generations generation = dataHanding.mostrarGeneration(request);
-            listaGenerations.add(generation);
-            json.escribirGenerations(listaGenerations);
-        }
-
     }
     @GetMapping("/request")
     public ArrayList<Request> getrequest(){
