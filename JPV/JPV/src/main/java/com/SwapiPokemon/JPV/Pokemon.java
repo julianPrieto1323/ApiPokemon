@@ -10,6 +10,7 @@ public class Pokemon {
     private int id;
     private String name;
     private List<AuxMove> moves;
+    private List<AbilitiesAux> abilities;
 
     public Pokemon() {
     }
