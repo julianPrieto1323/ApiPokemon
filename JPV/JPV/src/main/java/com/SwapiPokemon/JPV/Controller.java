@@ -3,6 +3,7 @@ package com.SwapiPokemon.JPV;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @RestController
 public class Controller{
@@ -14,6 +15,7 @@ public class Controller{
     String rutaberries = "berries.json";
     String rutaMoves = "moves.json";
     String rutaGenerations = "generations.json";
+    String rutaTipoRequest = "tipoRequest.json";
     ArrayList<Generations> listaGenerations = new ArrayList<Generations>();
     ArrayList<Moves> listaMoves = new ArrayList<Moves>();
     ArrayList<Berry> listaBerries= new ArrayList<Berry>();
@@ -21,7 +23,8 @@ public class Controller{
     ArrayList<Habilidad> listaAbilities= new ArrayList<Habilidad>();
     ArrayList<Pokemon> listaPokemon = new ArrayList<Pokemon>();
     @PostMapping("/pokemon")
-    public void getPokemon(@RequestBody Request request){
+    public Object getPokemon(@RequestBody Request request){
+        Object object = new Object();
         if (json.LeerFicheroJson(rutaPokemon) != null){
             listaPokemon = json.LeerFicheroJson(rutaPokemon);
         }
@@ -47,6 +50,7 @@ public class Controller{
                 Pokemon pokemon = dataHanding.mostrarPokemon(request);
                 listaPokemon.add(pokemon);
                 json.escribirUsers(listaPokemon);
+                object = pokemon;
                 break;
             case "ability":
                 listaRequest.add(request);
@@ -54,6 +58,7 @@ public class Controller{
                 Habilidad habilidad = dataHanding.mostrarHabilidad(request);
                 listaAbilities.add(habilidad);
                 json.escribirAbilities(listaAbilities);
+                object = habilidad;
                 break;
             case "berry":
                 listaRequest.add(request);
@@ -61,6 +66,7 @@ public class Controller{
                 Berry berry = dataHanding.mostrarBerry(request);
                 listaBerries.add(berry);
                 json.escribirBerries(listaBerries);
+                object = berry;
                 break;
             case "move":
                 listaRequest.add(request);
@@ -68,6 +74,7 @@ public class Controller{
                 Moves moves = dataHanding.mostrarMoves(request);
                 listaMoves.add(moves);
                 json.escribirMoves(listaMoves);
+                object = moves;
                 break;
             case "generation":
                 listaRequest.add(request);
@@ -75,8 +82,10 @@ public class Controller{
                 Generations generation = dataHanding.mostrarGeneration(request);
                 listaGenerations.add(generation);
                 json.escribirGenerations(listaGenerations);
+                object = generation;
                 break;
         }
+        return object;
     }
     @GetMapping("/request")
     public ArrayList<Request> getrequest(){
@@ -88,5 +97,9 @@ public class Controller{
         Request request1 = new Request(null, id);
         return dataHanding.eliminarRequest(request1);
     }
-
+    @GetMapping("/requestTodas")
+    public ArrayList<Request> getrequestTodas(){
+        ArrayList<Request> listaRequest = json.leerFicheroRequests(rutaTipoRequest);
+        return listaRequest;
+    }
 }

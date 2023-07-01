@@ -309,4 +309,35 @@ public class JSON {
         }
         return listaJSON;
     }
+    public static ArrayList<Generations> LeerFicheroRequest(String ruta){
+        //En esta clase se lee el fichero JSON de menores de 60
+        ArrayList <Generations> listaJSON = new ArrayList<Generations>();
+        try {
+            //Creamos el objeto Gson
+            Gson gson = new Gson();
+
+            // Creamos el reader
+            Reader reader = null;
+            try {
+                reader = Files.newBufferedReader(Paths.get(ruta));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            //Usamos la libreria Gson para leer el fichero Json e introducirlo en un arraylist
+            listaJSON = new Gson().fromJson(reader, new TypeToken<ArrayList<Generations>>() {}.getType());
+            System.out.println("FICHERO users.json LEIDO CORRECTAMENTE");
+
+            //Cerramos el reader
+            try {
+                reader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+        return listaJSON;
+    }
 }
