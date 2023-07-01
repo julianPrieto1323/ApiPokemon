@@ -87,6 +87,8 @@ public class Controller{
         }
         return object;
     }
+
+    //cambiar por arraylist generica para devolver datos
     @GetMapping("/request")
     public ArrayList<Request> getrequest(){
         ArrayList<Request> listaRequest = json.leerFicheroRequests(rutaRequest);
