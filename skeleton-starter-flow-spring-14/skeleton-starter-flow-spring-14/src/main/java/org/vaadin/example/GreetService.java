@@ -28,7 +28,8 @@ import java.util.Objects;
 public class GreetService implements Serializable {
     static String url = "http://localhost:8080/";
     public ArrayList<Request> getRequest() throws URISyntaxException {
-        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request")).GET().build();
+        String tipo = "request";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request?tipo=" + tipo )).GET().build();
         Gson gson = new Gson();
         String resultado = null;
         HttpResponse<String> respuesta = null;
@@ -46,6 +47,110 @@ public class GreetService implements Serializable {
         }
         return listaTweets;
     }
+    public ArrayList<Pokemon> getPokemonRegistrados() throws URISyntaxException {
+        String tipo = "pokemon";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request?tipo=" + tipo )).GET().build();
+        Gson gson = new Gson();
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+        ArrayList<Pokemon> listaTweets = new ArrayList<Pokemon>();
+        try {
+
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Pokemon>>(){}.getType());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTweets;
+    }
+
+    public ArrayList<Berry> getBerryRegistrados() throws URISyntaxException {
+        String tipo = "berry";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request?tipo=" + tipo )).GET().build();
+        Gson gson = new Gson();
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+        ArrayList<Berry> listaTweets = new ArrayList<Berry>();
+        try {
+
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Berry>>(){}.getType());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTweets;
+    }
+    public ArrayList<Habilidad> getAbilitiesRegistrados() throws URISyntaxException {
+        String tipo = "ability";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request?tipo=" + tipo )).GET().build();
+        Gson gson = new Gson();
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+        ArrayList<Habilidad> listaTweets = new ArrayList<Habilidad>();
+        try {
+
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Habilidad>>(){}.getType());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTweets;
+    }
+
+    public ArrayList<Generations> getGenerationRegistrados() throws URISyntaxException {
+        String tipo = "generation";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request?tipo=" + tipo )).GET().build();
+        Gson gson = new Gson();
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+        ArrayList<Generations> listaTweets = new ArrayList<Generations>();
+        try {
+
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Generations>>(){}.getType());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTweets;
+    }
+
+    public ArrayList<Moves> getMovesRegistrados() throws URISyntaxException {
+        String tipo = "move";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "request?tipo=" + tipo )).GET().build();
+        Gson gson = new Gson();
+        String resultado = null;
+        HttpResponse<String> respuesta = null;
+        ArrayList<Moves> listaTweets = new ArrayList<Moves>();
+        try {
+
+            respuesta = HttpClient.newBuilder().build().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            resultado = respuesta.body();
+            listaTweets = gson.fromJson(resultado, new TypeToken<ArrayList<Moves>>(){}.getType());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return listaTweets;
+    }
+
     public ArrayList<Request> getTodasRequest() throws URISyntaxException {
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(url + "requestTodas")).GET().build();
         Gson gson = new Gson();
