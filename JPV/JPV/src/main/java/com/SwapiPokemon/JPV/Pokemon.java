@@ -11,15 +11,17 @@ public class Pokemon {
     private String name;
     private List<AuxMove> moves;
     private List<AbilitiesAux> abilities;
+    private PokemonSpecies species;
 
     public Pokemon() {
     }
 
-    public Pokemon(int id, String name, List<AuxMove> moves, List<AbilitiesAux> abilities) {
+    public Pokemon(int id, String name, List<AuxMove> moves, List<AbilitiesAux> abilities, PokemonSpecies species) {
         this.id = id;
         this.name = name;
         this.moves = moves;
         this.abilities = abilities;
+        this.species = species;
     }
 
     public int getId() {
@@ -52,6 +54,25 @@ public class Pokemon {
 
     public void setAbilities(List<AbilitiesAux> abilities) {
         this.abilities = abilities;
+    }
+
+    public PokemonSpecies getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(PokemonSpecies species) {
+        this.species = species;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", moves=" + moves +
+                ", abilities=" + abilities +
+                ", species=" + species +
+                '}';
     }
 
     public String montarJSON(){
