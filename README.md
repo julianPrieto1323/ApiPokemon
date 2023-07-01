@@ -17,3 +17,5 @@ V-1.4 Funcionalidad de solicitud de Pokemons devuelve los Moves
 V-1.5 Modificada toda la funcionalidad de la solicitud de Pokemons con Moves para no usar lo mismo que la API original.
 
 V-1.6 Añadida funcionalidad de mostrar las Habilidades de los pokemon al solicitar un Pokemon.
+
+V-1.7 Añadida funcionalidad de mostrar Species de los pokemons al solicitar un Pokemon
