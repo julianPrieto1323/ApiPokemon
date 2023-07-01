@@ -23,3 +23,5 @@ V-1.7 Añadida funcionalidad de mostrar Species de los pokemons al solicitar un 
 V-1.8 Añadida funcionalidad de mostrar Generations
 
 V-2.0 Añadida la funcionalidad del Front de mostrar los distintos tipos de clases de los que se pueden pedir información.
+
+V-3.0 Modificado el Front para poder ver todos los tipos de Request.
