@@ -40,7 +40,14 @@ public class Controller{
         if (json.LeerFicheroGenerations(rutaGenerations) != null){
             listaGenerations = json.LeerFicheroGenerations(rutaGenerations);
         }
-
+        switch (request.getTipo()){
+            case "pokemon":
+                listaRequest.add(request);
+                json.escribirPeticion(listaRequest);
+                Pokemon pokemon = dataHanding.mostrarPokemon(request);
+                listaPokemon.add(pokemon);
+                json.escribirUsers(listaPokemon);
+        }
         if (request.getTipo().equals("pokemon")){
             listaRequest.add(request);
             json.escribirPeticion(listaRequest);
