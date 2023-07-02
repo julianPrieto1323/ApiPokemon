@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class Habilidad {
     private int id;
     private String name;
-    private ArrayList<Pokemon> pokemon;
+    private ArrayList<AuxPokemon> pokemon;
 
     public Habilidad() {
     }
 
-    public Habilidad(int id, String name, ArrayList<Pokemon> pokemon) {
+    public Habilidad(int id, String name, ArrayList<AuxPokemon> pokemon) {
         this.id = id;
         this.name = name;
         this.pokemon = pokemon;
@@ -34,11 +34,11 @@ public class Habilidad {
         this.name = name;
     }
 
-    public ArrayList<Pokemon> getPokemon() {
+    public ArrayList<AuxPokemon> getPokemon() {
         return pokemon;
     }
 
-    public void setPokemon(ArrayList<Pokemon> pokemon) {
+    public void setPokemon(ArrayList<AuxPokemon> pokemon) {
         this.pokemon = pokemon;
     }
 
