@@ -63,6 +63,15 @@ public class JSON {
         }
     }
 
+    public boolean buscarObjeto(Pokemon pokemon, ArrayList<Pokemon> lista){
+        for (int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getId() == pokemon.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static ArrayList<Request> leerFicheroRequests(String ruta){
         //En esta clase se lee el fichero JSON de menores de 60
         ArrayList <Request> listaJSON = new ArrayList<Request>();
